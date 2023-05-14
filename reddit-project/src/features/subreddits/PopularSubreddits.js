@@ -2,6 +2,7 @@ import { selectPopularSubreddits } from "./subredditsSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReddit } from '@fortawesome/free-brands-svg-icons';
+import Search from '../search/Search';
 
 
 export function PopularSubreddits() {
@@ -16,6 +17,8 @@ export function PopularSubreddits() {
 
     return(
         <section id="sideNav">
+            <Search />
+            <hr />
             <h2>the best of subreddits</h2>
             <ul>
             {subredditNames.map(name => {
