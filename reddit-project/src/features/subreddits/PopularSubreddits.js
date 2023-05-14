@@ -1,24 +1,15 @@
 import { selectPopularSubreddits } from "./subredditsSlice";
 import { useSelector, useDispatch } from 'react-redux';
-import { hideSubreddit } from './subredditsSlice';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { faReddit } from '@fortawesome/free-brands-svg-icons';
 
 
 export function PopularSubreddits() {
     const subreddits = useSelector(selectPopularSubreddits);
+    const subredditNames = subreddits.map(subreddit => subreddit.name).sort(Intl.Collator().compare);
     const dispatch = useDispatch();
 
-    const hideSubredditById = (id) => () => {
-        dispatch(hideSubreddit({ id: id }));
-    }
-
-    const displayBtn = (id) => () => {
-        document.getElementById(`subreddit${id}`).className = 'visibleBtn';
-    }
-    const hideBtn = (id) => () => {
-        document.getElementById(`subreddit${id}`).className = 'hiddenBtn';
-    }
+    
     const viewSubreddit = (id) => () => {
         
     }
@@ -27,21 +18,25 @@ export function PopularSubreddits() {
         <section id="sideNav">
             <h2>the best of subreddits</h2>
             <ul>
-                {subreddits.map(subreddit => (
-                    <li 
-                        onMouseOver={displayBtn(subreddit.id)} 
-                        onMouseOut={hideBtn(subreddit.id)} 
-                        onClick={viewSubreddit(subreddit.id)} 
-                        key={subreddit.id}>
-                            <button 
-                                id={`subreddit${subreddit.id}`} 
-                                className="hiddenBtn" 
-                                onClick={hideSubredditById(subreddit.id)}>
-                                    <FontAwesomeIcon icon={faEyeSlash} style={{color: "#000000",}} />
-                            </button>
-                            {subreddit.name}
+            {subredditNames.map(name => {
+                const subreddit = subreddits.find(sub => sub.name === name);
+                if (subreddit) {
+                    return (
+                    <li
+                        onClick={() => viewSubreddit(subreddit.id)}
+                        key={subreddit.id}
+                    >
+                        {subreddit.icon ? (
+                        <img className="subredditImg" alt={name} src={require(`../../data/images/${subreddit.icon}`)} />
+                        ) : (
+                        <FontAwesomeIcon icon={faReddit} size="xl" style={{ color: "#ff4500", marginRight: 5 }} />
+                        )}
+                        {name}
                     </li>
-            ))}
+                    );
+                }
+                return null;
+                })}
             </ul>
         </section>
     )
