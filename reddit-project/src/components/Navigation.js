@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReddit } from '@fortawesome/free-brands-svg-icons';
 import { faFire, faUpLong, faArrowTrendUp } from '@fortawesome/free-solid-svg-icons';
+import Search from '../features/search/Search';
 
 export default function Navigation() {
     return(
