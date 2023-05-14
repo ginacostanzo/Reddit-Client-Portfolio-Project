@@ -1,10 +1,25 @@
-import { selectPopularSubreddits } from "../subreddits/subredditsSlice";
 import { useSelector, useDispatch } from 'react-redux';
-import { hideSubreddit } from '../subreddits/subredditsSlice';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
+import { loadHomepagePosts, selectPosts } from './postsSlice';
+import { useEffect } from 'react';
+import Post from './Post';
 
 
-export function Posts() {
-    
+export function Posts({ selectedSubreddit }) {
+    const dispatch = useDispatch();
+    const posts = useSelector(selectPosts);
+
+    useEffect(() => {
+        // Load posts when the component mounts or when the selectedSubreddit changes
+        if (!selectedSubreddit) {
+          dispatch(loadHomepagePosts());
+        }
+      }, [dispatch, selectedSubreddit]);
+
+    return(
+        <section id="posts">
+            {posts.map(post => (
+                <Post post={post} />
+            ))}
+        </section>
+    )
 }
