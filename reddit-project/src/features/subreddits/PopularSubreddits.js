@@ -3,16 +3,17 @@ import { useSelector, useDispatch } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faReddit } from '@fortawesome/free-brands-svg-icons';
 import Search from '../search/Search';
+import { loadPostsBySubreddit} from '../posts/postsSlice';
 
 
-export function PopularSubreddits() {
+export function PopularSubreddits({onSubredditClick}) {
     const subreddits = useSelector(selectPopularSubreddits);
     const subredditNames = subreddits.map(subreddit => subreddit.name).sort(Intl.Collator().compare);
     const dispatch = useDispatch();
 
-    
     const viewSubreddit = (id) => () => {
-        
+        onSubredditClick(subreddits.find(sub => sub.id === id));
+        dispatch(loadPostsBySubreddit(id));
     }
 
     return(
@@ -26,7 +27,7 @@ export function PopularSubreddits() {
                 if (subreddit) {
                     return (
                     <li
-                        onClick={() => viewSubreddit(subreddit.id)}
+                        onClick={viewSubreddit(subreddit.id)}
                         key={subreddit.id}
                     >
                         {subreddit.icon ? (
