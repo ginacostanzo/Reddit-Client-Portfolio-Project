@@ -1,24 +1,15 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { loadHomepagePosts, selectPosts } from './postsSlice';
-import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import Post from './Post';
+import { selectPosts } from './postsSlice';
 
 
-export function Posts({ selectedSubreddit }) {
-    const dispatch = useDispatch();
+export function Posts() {
     const posts = useSelector(selectPosts);
-
-    useEffect(() => {
-        // Load posts when the component mounts or when the selectedSubreddit changes
-        if (!selectedSubreddit) {
-          dispatch(loadHomepagePosts());
-        }
-      }, [dispatch, selectedSubreddit]);
 
     return(
         <section id="posts">
             {posts.map(post => (
-                <Post post={post} />
+                <Post key={post.data.id} post={post.data} />
             ))}
         </section>
     )
