@@ -24,6 +24,12 @@ h1 {
   margin: 10px 0;
 }
 
+#viewing {
+  font-size: .75rem;
+  margin-bottom: 0;
+  font-family: 'Verdana', sans-serif;
+}
+
 #search {
   margin-top: 20px;
   font-family: 'Verdana', sans-serif;
@@ -74,7 +80,7 @@ li:hover img {
   vertical-align: middle;
 }
 
-.visibleBtn:hover {
+button:hover {
   cursor: pointer;
 }
 
@@ -120,3 +126,7 @@ li:hover img {
   border: 1px solid gray;
 }
 
+.postLink {
+  text-decoration: none;
+  color: black;
+}
