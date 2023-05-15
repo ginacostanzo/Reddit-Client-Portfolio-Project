@@ -10,7 +10,7 @@ export default function Post({post}) {
                 {post.title}
                 <br />
                 {post.media_metadata && 
-                <img alt='preview of the post' src={post.media_metadata[0].s.u} />
+                <img alt='preview of the post' src='../../data/images/gaming.png' />
                 }
                 {post.score}
                 <br />
