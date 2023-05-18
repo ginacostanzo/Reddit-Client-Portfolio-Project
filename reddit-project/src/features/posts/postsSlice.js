@@ -28,15 +28,18 @@ export const loadPostsByButton = createAsyncThunk(
 
 export const loadPostsBySearch = createAsyncThunk(
     'posts/loadPostsBySearch', // action type
-    async ({term, subreddit}, thunkAPI) => { // payload creator
+    async ({term, selectedSubreddit}, thunkAPI) => { // payload creator
         let url;
         if (term) {
-            if (subreddit) {
-                url = `https://www.reddit.com/${subreddit}/search.json?q=${term}`;
+          if (selectedSubreddit &&
+              selectedSubreddit.name !== 'top' &&
+              selectedSubreddit.name !== 'hot') {
+                url = `https://www.reddit.com/${selectedSubreddit.name}/search.json?q=${term}&restrict_sr=1`;
             } else {
-                url = `https://www.reddit.com/search.json?q=${term}`
+                url = `https://www.reddit.com/search.json?q=${term}&sort=top`
 
             }
+            console.log(url);
             const response = await fetch(url)
             return response.json();
         }
