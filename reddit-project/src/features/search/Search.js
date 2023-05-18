@@ -10,7 +10,7 @@ export default function Search({onSearchChange, selectedSubreddit}) {
         e.preventDefault();
         const term = document.getElementById('searchBar').value;
         onSearchChange(term);
-        dispatch(loadPostsBySearch(term, selectedSubreddit));
+        dispatch(loadPostsBySearch({term, selectedSubreddit}));
         }
 
     return(
