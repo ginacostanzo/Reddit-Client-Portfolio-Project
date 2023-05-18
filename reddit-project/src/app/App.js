@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 
 function App() {
-  const [selectedSubreddit, setSelectedSubreddit] = useState(null);
+  const [selectedSubreddit, setSelectedSubreddit] = useState('');
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
 
