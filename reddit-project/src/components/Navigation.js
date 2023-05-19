@@ -21,7 +21,6 @@ export default function Navigation({onBtnClick, selectedSubreddit}) {
           <button className="navBtn" value="hot" onClick={handleBtnClick}>Hot <FontAwesomeIcon icon={faFire} style={{color: "#ffffff",}} /></button>
           <button className="navBtn" value="r/popular" onClick={handleBtnClick}>Popular <FontAwesomeIcon icon={faArrowTrendUp} style={{color: "#ffffff",}} /></button>
           <br />
-          <p id="viewing">Currently viewing: {selectedSubreddit ? selectedSubreddit.name : 'Best' }</p>
       </section>
     )
 }
