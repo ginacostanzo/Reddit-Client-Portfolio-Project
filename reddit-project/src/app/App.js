@@ -8,7 +8,7 @@ import { useDispatch } from 'react-redux';
 
 
 function App() {
-  const [selectedSubreddit, setSelectedSubreddit] = useState('');
+  const [selectedSubreddit, setSelectedSubreddit] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
   const dispatch = useDispatch();
 
@@ -31,8 +31,12 @@ function App() {
     <div className="App">
       <Navigation onBtnClick={handleSubredditClick} selectedSubreddit={selectedSubreddit} />
       <div className="grid">
-        <SideNavigation selectedSubreddit={selectedSubreddit} onSearchChange={handleSearchChange} onSubredditClick={handleSubredditClick} />
-        <Posts selectedSubreddit={selectedSubreddit} />
+        <div className="grid-left">
+          <SideNavigation selectedSubreddit={selectedSubreddit} onSearchChange={handleSearchChange} onSubredditClick={handleSubredditClick} />
+        </div>
+        <div className="grid-right">
+          <Posts selectedSubreddit={selectedSubreddit} />
+        </div>    
       </div>
     </div>
   );
