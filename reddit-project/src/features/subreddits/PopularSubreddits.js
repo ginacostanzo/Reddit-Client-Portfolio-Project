@@ -16,7 +16,7 @@ export function PopularSubreddits({onSubredditClick}) {
     }
 
     return(
-        <>
+        <section className="subreddits">
             <h2>the best of subreddits</h2>
             <ul>
             {subredditNames.map(name => {
@@ -39,6 +39,6 @@ export function PopularSubreddits({onSubredditClick}) {
                 return null;
                 })}
             </ul>
-        </>
+        </section>
     )
 }
