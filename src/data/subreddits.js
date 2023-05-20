@@ -75,5 +75,8 @@ export const subreddits = [
     {id: 20,
     name: 'r/books',
     members: '22,000,000',
-    icon: 'books.png'}
+    icon: 'books.png'},
+    {id: 21,
+    name: 'r/popular',
+    icon: 'popular.png'}
 ]
