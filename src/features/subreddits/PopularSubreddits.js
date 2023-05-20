@@ -17,28 +17,55 @@ export function PopularSubreddits({onSubredditClick}) {
 
     return(
         <section className="subreddits">
-            <h2>the best of subreddits</h2>
-            <ul>
-            {subredditNames.map(name => {
-                const subreddit = subreddits.find(sub => sub.name === name);
-                if (subreddit) {
-                    return (
-                    <li
-                        onClick={viewSubreddit(subreddit.id)}
-                        key={subreddit.id}
-                    >
-                        {subreddit.icon ? (
-                        <img className="subredditImg" alt={name} src={require(`../../data/images/${subreddit.icon}`)} />
-                        ) : (
-                        <FontAwesomeIcon icon={faReddit} size="xl" style={{ color: "#ff4500", marginRight: 5 }} />
-                        )}
-                        {name}
-                    </li>
-                    );
-                }
-                return null;
-                })}
-            </ul>
+            <div className="desktop">
+                <h2>the best of subreddits</h2>
+                <ul>
+                {subredditNames.map(name => {
+                    const subreddit = subreddits.find(sub => sub.name === name);
+                    if (subreddit) {
+                        return (
+                        <li
+                            onClick={viewSubreddit(subreddit.id)}
+                            key={subreddit.id}
+                        >
+                            {subreddit.icon ? (
+                            <img className="subredditImg" alt={name} src={require(`../../data/images/${subreddit.icon}`)} />
+                            ) : (
+                            <FontAwesomeIcon icon={faReddit} size="xl" style={{ color: "#ff4500", marginRight: 5 }} />
+                            )}
+                            {name}
+                        </li>
+                        );
+                    }
+                    return null;
+                    })}
+                </ul>
+            </div>
+            <div className="mobile">
+                <label htmlFor="subredditSelect">subreddit: </label>
+                <select id="subredditSelect" onChange={(event) => {
+                    const id = parseInt(event.target.value, 10);
+                    viewSubreddit(id)();
+                    }}>
+
+                    <option disabled>Subreddit...</option>
+                {subredditNames.map(name => {
+                    const subreddit = subreddits.find(sub => sub.name === name);
+                    if (subreddit) {
+                        return (
+                        <option
+                            value={subreddit.id}
+                            key={subreddit.id}
+                        >
+                            {name}
+                        </option>
+                        );
+                    }
+                    return null;
+                    })}
+                </select>
+            </div>
+            
         </section>
     )
 }

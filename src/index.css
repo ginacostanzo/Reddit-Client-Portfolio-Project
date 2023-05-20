@@ -269,3 +269,89 @@ button:hover {
 .sideNav {
   position: relative;
 }
+
+.desktop {
+  display: block;
+}
+
+.mobile {
+  display: none;
+}
+
+@media only screen and (max-width: 480px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  #sideNav {
+    width: 100vw;
+    border-bottom: 15px solid #DAE0E6;
+    text-align: center;
+    position: sticky;
+    top: 30px;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  #viewing {
+    font-size: 1rem;
+    margin: 0;
+  }
+
+  .subredditImgViewing {
+    height: 24px;
+    width: 24px;
+  }
+
+  .subreddits {
+    height: 100%;
+  }
+
+  .subreddits label {
+    font-family: "Verdana", sans-serif;
+  }
+
+  .subreddits select {
+    height: 25px;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+
+  #search {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  #searchBar {
+    width: 70vw;
+    margin: 0;
+  }
+
+  #search > label {
+    display: none;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  .navBtn {
+    font-size: 1rem;
+  }
+
+  .post {
+    border: 0;
+    border-radius: 0;
+  }
+
+  #posts {
+    margin-top: 0;
+  }
+}

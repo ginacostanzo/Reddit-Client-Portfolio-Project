@@ -29,15 +29,23 @@ function App() {
 
   return (
     <div className="App">
-      <Navigation onBtnClick={handleSubredditClick} selectedSubreddit={selectedSubreddit} />
-      <div className="grid">
-        <div className="grid-left">
-          <SideNavigation selectedSubreddit={selectedSubreddit} onSearchChange={handleSearchChange} onSubredditClick={handleSubredditClick} />
+      <div className="desktop">
+        <Navigation onBtnClick={handleSubredditClick} selectedSubreddit={selectedSubreddit} />
+        <div className="grid">
+          <div className="grid-left">
+            <SideNavigation selectedSubreddit={selectedSubreddit} onSearchChange={handleSearchChange} onSubredditClick={handleSubredditClick} />
+          </div>
+          <div className="grid-right">
+            <Posts selectedSubreddit={selectedSubreddit} />
+          </div>    
         </div>
-        <div className="grid-right">
-          <Posts selectedSubreddit={selectedSubreddit} />
-        </div>    
       </div>
+      <div className="mobile">
+        <Navigation onBtnClick={handleSubredditClick} selectedSubreddit={selectedSubreddit} />
+        <SideNavigation selectedSubreddit={selectedSubreddit} onSearchChange={handleSearchChange} onSubredditClick={handleSubredditClick} />
+        <Posts selectedSubreddit={selectedSubreddit} />
+      </div>
+      
     </div>
   );
 }
