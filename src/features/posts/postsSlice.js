@@ -24,7 +24,9 @@ export const loadPostsByButton = createAsyncThunk(
       console.log('slice button: ' + button)
       console.log('slice subreddit: ' + selectedSubreddit)
       let url;
-        if (selectedSubreddit) {
+        if (selectedSubreddit && 
+          selectedSubreddit.name !== 'top' &&
+          selectedSubreddit.name !== 'hot') {
           url = `https://www.reddit.com/${selectedSubreddit.name}/${button}.json`;
           console.log('url: ' + url)
         } else {
