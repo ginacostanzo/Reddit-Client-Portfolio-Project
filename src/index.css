@@ -327,6 +327,7 @@ button:hover {
   #search {
     margin: 0;
     font-size: 1rem;
+    touch-action: manipulation; 
   }
 
   #searchBar {
