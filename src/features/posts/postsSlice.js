@@ -20,8 +20,18 @@ export const loadPostsBySubreddit = createAsyncThunk(
 
 export const loadPostsByButton = createAsyncThunk(
     'posts/loadPostsByButton', // action type
-    async (button, thunkAPI) => { // payload creator
-        const response = await fetch(`https://www.reddit.com/${button}.json`);
+    async ({button, selectedSubreddit}, thunkAPI) => { // payload creator
+      console.log('slice button: ' + button)
+      console.log('slice subreddit: ' + selectedSubreddit)
+      let url;
+        if (selectedSubreddit) {
+          url = `https://www.reddit.com/${selectedSubreddit.name}/${button}.json`;
+          console.log('url: ' + url)
+        } else {
+          url = `https://www.reddit.com/${button}.json`;
+          console.log('url: ' + url)
+        }
+        const response = await fetch(url);
         return response.json();
     }
 );

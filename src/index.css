@@ -24,6 +24,10 @@ h1 {
   margin: 10px 0;
 }
 
+h1:hover {
+  cursor: pointer;
+}
+
 #viewing {
   font-family: 'Varela Round', sans-serif;
   font-size: 1.5rem;
